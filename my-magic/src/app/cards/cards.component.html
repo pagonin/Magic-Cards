@@ -1,0 +1,31 @@
+<my-magic-header [title]="id"></my-magic-header>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav [autoFocus]="false">
+    <my-magic-type-list (onTypeSelected)='sidenav.toggle()'></my-magic-type-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="my-class-active">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>{{title}}</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+
+    <!--sous condition donc ng-template-->
+
+    <my-magic-card *ngIf="query && -1!== query.indexOf('-'); else cardList" [idCard]="query"></my-magic-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #cardList>
+  <my-magic-card-list [type]="query"
+  (onBeforeCards)="toggleLoading()"
+  (onCards)="toggleLoading()"></my-magic-card-list>
+</ng-template>
+

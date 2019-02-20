@@ -1,0 +1,11 @@
+<my-magic-header [title]="idCard"></my-magic-header>
+
+<section fxLayout="row wrap" fxLayoutAlign="center">
+    
+        <img [src]="card.imageUrl" *ngIf="card && card.imageUrl" 
+        fxFlex.xs="0 0 50" 
+        fxFlex.sm="33" 
+        fxFlex.md="25" 
+        fxFlex.lg="20"
+        fxFlex.xl="20" />  
+</section>

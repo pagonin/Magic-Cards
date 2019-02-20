@@ -1,0 +1,11 @@
+@import "~@angular/material/theming";
+
+:host{
+
+.my-class-active {
+    background:map-get($mat-light-blue, 900) !important;
+    color: white;
+     
+}
+
+}
